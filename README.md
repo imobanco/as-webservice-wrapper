@@ -31,7 +31,7 @@ Nessa lista só ficam as mensagens com sucesso?
 ## Confirmação de retirada de mensagem
 Confirma que tal mensagem foi retirada (serve como ack de um pub/sub consumer?). 
 
-Remove da lista de mensagens essa mensagem co sucesso?
+Remove da lista de mensagens essa mensagem com sucesso?
 
 
 # Referências técnicas
