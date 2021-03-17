@@ -13,7 +13,7 @@ realizar conectividade de troca de arquivos de transações
 ## Lista de serviços
 Cada serviço disponível é um tipo de transação bancária possível de ser realizada.
 
-Cada serviço possui seu identificaro mnemônico de tipo de transação.
+Cada serviço possui seu identificador mnemônico de tipo de transação.
 
 ## Envio de mensagem
 Uma mensagem representa uma requisição de transação.
