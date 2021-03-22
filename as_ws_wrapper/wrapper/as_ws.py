@@ -69,9 +69,7 @@ class AccesstageSoapWrapper(BaseSoapWrapper):
         )
         client.wsdl.dump()
 
-        data = dict(
-            trackingId=identifier
-        )
+        data = dict(trackingId=identifier)
 
         r = client.service.process(**data)
 
