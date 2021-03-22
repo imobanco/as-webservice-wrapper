@@ -4,6 +4,6 @@ from as_ws_wrapper.wrapper.as_ws import AccesstageSoapWrapper
 from examples.utils import dump_response
 
 
-r = AccesstageSoapWrapper().envia_mensagem()
+r = AccesstageSoapWrapper().envia_mensagem("1", False, b"asd")
 
 dump_response(r, os.path.basename(__file__).split(".")[0])
