@@ -25,7 +25,7 @@ SEGMENTO B – É o complemento das informações do favorecido.
 
  
 
-SEGMENTO J - Será utilizado se a forma de pagamento for pagamentos de boletos (coluna type invoice_payment), nessa forma de pagamento a pessoa  a pessoa física ou jurídica que recebe o pagamento é chama de Beneficiário ou Cedente, uma das informações que é inserida nesse segmento é o código de barra.
+SEGMENTO J - Será utilizado se a forma de pagamento for pagamentos de boletos (coluna type invoice_payment), nessa forma de pagamento  a pessoa física ou jurídica que recebe o pagamento é chama de Beneficiário ou Cedente, uma das informações que é inserida nesse segmento é o código de barra.
 
 SEGMENTO J52 - É o complemento das informações do beneficiário.
 
