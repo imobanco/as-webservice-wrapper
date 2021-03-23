@@ -22,7 +22,7 @@ class StringBase64Adapter:
         elif type(message) == bytes:
             message_bytes = message
         else:
-            raise ValueError('Tipo da mensagem não identificada')
+            raise ValueError("Tipo da mensagem não identificada")
         result_bytes = action(message_bytes)
         if result_as_string:
             result_string = result_bytes.decode()

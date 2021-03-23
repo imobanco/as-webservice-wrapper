@@ -1,5 +1,3 @@
-from csv import DictWriter, DictReader
-from io import StringIO
 from typing import List
 
 from ..models.base import TransactionModel
@@ -32,9 +30,7 @@ class PydanticBase64Adapter:
         pydantic_class,
         delimiter=PydanticCSVAdapter.SEMICOLON,
     ):
-        csv_string = StringBase64Adapter().b64_to_string(
-            base64_string
-        )
+        csv_string = StringBase64Adapter().b64_to_string(base64_string)
         instances = PydanticCSVAdapter().csv_string_to_pydantic(
             csv_string, pydantic_class, delimiter
         )
