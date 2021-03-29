@@ -25,7 +25,7 @@ class PydanticCSVAdapterTestCase(TestCase):
             instances, TransactionModel
         )
 
-        expected = "document;document_type;name;bank_account_bank_name;bank_account_bank_code;bank_account_number;bank_account_number_dv;bank_account_routing;bank_account_routing_dv;bank_account_routing_number_dv;payment_type;number;payment_amount;payment_date;code_line;expiration_date\r\n12345678901234;CNPJ;foo bar da silva;Banco do Brasil;001;123123;4;123123;4;;03;1;12345;22032021;;\r\n12345678901234;CNPJ;foo bar da silva;;;;;;;;31;1;12345;22032021;12312312312312312312312312312312313123;25032021\r\n"  # noqa
+        expected = "payer_document;payer_document_type;payer_name;payer_bank_account_number;payer_bank_account_number_dv;payer_bank_account_routing;payer_bank_account_routing_dv;payer_convenio;receiver_document;receiver_document_type;receiver_name;receiver_bank_account_bank_name;receiver_bank_account_bank_code;receiver_bank_account_number;receiver_bank_account_number_dv;receiver_bank_account_routing;receiver_bank_account_routing_dv;receiver_bank_account_routing_number_dv;payment_type;number;payment_amount;payment_date;code_line;expiration_date\r\n12345678901234;CNPJ;foo bar da silva;123123;4;123123;4;123;12345678901234;CNPJ;foo bar da silva;Banco do Brasil;001;123123;4;123123;4;;03;1;12345;22032021;;\r\n12345678901234;CNPJ;foo bar da silva;123123;4;123123;4;123;12345678901234;CNPJ;foo bar da silva;;;;;;;;31;1;12345;22032021;12312312312312312312312312312312313123;25032021\r\n"  # noqa
 
         self.assertEqual(result, expected)
 
@@ -40,7 +40,7 @@ class PydanticCSVAdapterTestCase(TestCase):
         Então:
             - o resultado deve ter a lista de instâncias corretas
         """
-        csv_string = "document;document_type;name;bank_account_bank_name;bank_account_bank_code;bank_account_number;bank_account_number_dv;bank_account_routing;bank_account_routing_dv;bank_account_routing_number_dv;payment_type;number;payment_amount;payment_date;code_line;expiration_date\r\n12345678901234;CNPJ;foo bar da silva;Banco do Brasil;001;123123;4;123123;4;;03;1;12345;22032021;;\r\n12345678901234;CNPJ;foo bar da silva;;;;;;;;31;1;12345;22032021;12312312312312312312312312312312313123;25032021\r\n"  # noqa
+        csv_string = "payer_document;payer_document_type;payer_name;payer_bank_account_number;payer_bank_account_number_dv;payer_bank_account_routing;payer_bank_account_routing_dv;payer_convenio;receiver_document;receiver_document_type;receiver_name;receiver_bank_account_bank_name;receiver_bank_account_bank_code;receiver_bank_account_number;receiver_bank_account_number_dv;receiver_bank_account_routing;receiver_bank_account_routing_dv;receiver_bank_account_routing_number_dv;payment_type;number;payment_amount;payment_date;code_line;expiration_date\r\n12345678901234;CNPJ;foo bar da silva;123123;4;123123;4;123;12345678901234;CNPJ;foo bar da silva;Banco do Brasil;001;123123;4;123123;4;;03;1;12345;22032021;;\r\n12345678901234;CNPJ;foo bar da silva;123123;4;123123;4;123;12345678901234;CNPJ;foo bar da silva;;;;;;;;31;1;12345;22032021;12312312312312312312312312312312313123;25032021\r\n"  # noqa
 
         result = PydanticCSVAdapter().csv_string_to_pydantic(
             csv_string, TransactionModel
