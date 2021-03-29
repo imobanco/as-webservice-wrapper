@@ -9,10 +9,10 @@ class PayerInfo(BaseModel):
         "CPF", "CNPJ"
     ]  # tipo do documento 'CPF' ou 'CNPJ' do pagador
     payer_name: str  # nome do pagador
-    payer_bank_account_number: str  # número da conta bancária do pagador  | TED/DOC apenas
-    payer_bank_account_number_dv: str  # dv do númerp da conta bancária do pagador  | TED/DOC apenas
-    payer_bank_account_routing: str  # agência da conta bancária do pagador  | TED/DOC apenas
-    payer_bank_account_routing_dv: str  # dv da agência da conta bancária do pagador  | TED/DOC apenas
+    payer_bank_account_number: str  # número da conta bancária do pagador  | TED/DOC apenas  # noqa: E501
+    payer_bank_account_number_dv: str  # dv do númerp da conta bancária do pagador  | TED/DOC apenas  # noqa: E501
+    payer_bank_account_routing: str  # agência da conta bancária do pagador  | TED/DOC apenas  # noqa: E501
+    payer_bank_account_routing_dv: str  # dv da agência da conta bancária do pagador  | TED/DOC apenas  # noqa: E501
     payer_convenio: str  # convênio do pagador
 
 

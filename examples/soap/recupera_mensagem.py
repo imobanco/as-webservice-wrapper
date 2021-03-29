@@ -6,7 +6,6 @@ from examples.utils import dump_response
 
 r = AccesstageSoapWrapper().recupera_mensagem("202103298171334")
 
-r.data['dscConteudoMensagem'] = r.data['dscConteudoMensagem'].decode()
-
+r.data["dscConteudoMensagem"] = r.data["dscConteudoMensagem"].decode()
 
 dump_response(r.data, os.path.basename(__file__).split(".")[0])
