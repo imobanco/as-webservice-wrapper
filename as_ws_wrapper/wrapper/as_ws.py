@@ -2,6 +2,7 @@ from zeep.exceptions import TransportError
 from zeep.xsd.valueobjects import CompoundValue
 
 from .soap import BaseSoapWrapper
+from ..response import ProcessedResponse
 
 
 class AccesstageSoapWrapper(BaseSoapWrapper):
@@ -9,19 +10,21 @@ class AccesstageSoapWrapper(BaseSoapWrapper):
 
     def _process_response(self, response):
         try:
-            if isinstance(response, CompoundValue):
+            if isinstance(response, CompoundValue) and response['dscErroEnvio']:
                 raise TransportError(message=response["dscErroEnvio"], content=response)
         except KeyError:
             pass
         try:
             if isinstance(response, CompoundValue):
-                if "Erro" in response["dscStatusRetirada"]:
+                if any(value in response["dscStatusRetirada"] for value in ["Erro", 'invalidVariables']):
                     raise TransportError(
                         message=response["dscStatusRetirada"], content=response
                     )
         except KeyError:
             pass
-        return response
+
+        processed_response = ProcessedResponse(response)
+        return processed_response
 
     def _get_wsl(self, service):
         """
@@ -37,7 +40,7 @@ class AccesstageSoapWrapper(BaseSoapWrapper):
 
         r = client.service.process()
 
-        self._process_response(r)
+        r = self._process_response(r)
 
         return r
 
@@ -46,7 +49,7 @@ class AccesstageSoapWrapper(BaseSoapWrapper):
 
         r = client.service.process()
 
-        self._process_response(r)
+        r = self._process_response(r)
 
         return r
 
@@ -54,7 +57,6 @@ class AccesstageSoapWrapper(BaseSoapWrapper):
         self, cod_intercambio: str, flag_compactacao: bool, msg_b64_bytes: bytes
     ):
         client = self.get_client(wsdl=self._get_wsl("EnvioMensagemProxy"))
-        client.wsdl.dump()
 
         data = dict(
             codIntercambio=cod_intercambio,
@@ -64,25 +66,23 @@ class AccesstageSoapWrapper(BaseSoapWrapper):
 
         r = client.service.process(**data)
 
-        self._process_response(r)
+        r = self._process_response(r)
 
         return r
 
     def recupera_mensagem(self, identifier):
         client = self.get_client(wsdl=self._get_wsl("RecuperacaoMensagemProxy"))
-        client.wsdl.dump()
 
         data = dict(trackingId=identifier)
 
         r = client.service.process(**data)
 
-        self._process_response(r)
+        r = self._process_response(r)
 
         return r
 
     def confirma_retirada(self, identifier, data_retirada, file_name):
         client = self.get_client(wsdl=self._get_wsl("ConfirmacaoRetiradaProxy"))
-        client.wsdl.dump()
 
         data = dict(
             trackingID=identifier, dataRetirada=data_retirada, nmeArquivo=file_name
@@ -90,6 +90,6 @@ class AccesstageSoapWrapper(BaseSoapWrapper):
 
         r = client.service.process(**data)
 
-        self._process_response(r)
+        r = self._process_response(r)
 
         return r
