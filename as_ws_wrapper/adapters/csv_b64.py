@@ -1,8 +1,8 @@
 from typing import List
 
 from ..models.base import TransactionModel
-from .csv import PydanticCSVAdapter
-from .b64 import StringBase64Adapter
+from as_ws_wrapper.adapters.csv import PydanticCSVAdapter
+from as_ws_wrapper.adapters.b64 import StringBase64Adapter
 
 
 class PydanticBase64Adapter:
@@ -15,7 +15,7 @@ class PydanticBase64Adapter:
     def pydantic_to_b64(
         self,
         instances: List[TransactionModel],
-        pydantic_class,
+        pydantic_class=TransactionModel,
         delimiter=PydanticCSVAdapter.SEMICOLON,
     ):
         csv_string = PydanticCSVAdapter().pydantic_to_csv_string(
@@ -27,7 +27,7 @@ class PydanticBase64Adapter:
     def b64_to_pydantic(
         self,
         base64_string,
-        pydantic_class,
+        pydantic_class=TransactionModel,
         delimiter=PydanticCSVAdapter.SEMICOLON,
     ):
         csv_string = StringBase64Adapter().b64_to_string(base64_string)
