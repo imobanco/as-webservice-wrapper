@@ -1,1 +1,30 @@
-[]
+[
+    {
+        "trkIdIn": 202103298169747,
+        "tipoDocumento": "OUTROS ",
+        "nmeEmpresaOrigem": "IMOBANCO BANCO DE COBRAN\u00c7A IMOBILI\u00c1RIA LTDA",
+        "dtaHoraDisp": "2021-03-29T10:46:14.000-03:00",
+        "totalBytes": 2028
+    },
+    {
+        "trkIdIn": 202103298171461,
+        "tipoDocumento": "OUTROS ",
+        "nmeEmpresaOrigem": "IMOBANCO BANCO DE COBRAN\u00c7A IMOBILI\u00c1RIA LTDA",
+        "dtaHoraDisp": "2021-03-29T10:55:37.000-03:00",
+        "totalBytes": 2028
+    },
+    {
+        "trkIdIn": 202103298170726,
+        "tipoDocumento": "OUTROS ",
+        "nmeEmpresaOrigem": "IMOBANCO BANCO DE COBRAN\u00c7A IMOBILI\u00c1RIA LTDA",
+        "dtaHoraDisp": "2021-03-29T10:50:32.000-03:00",
+        "totalBytes": 2028
+    },
+    {
+        "trkIdIn": 202103298171334,
+        "tipoDocumento": "OUTROS ",
+        "nmeEmpresaOrigem": "IMOBANCO BANCO DE COBRAN\u00c7A IMOBILI\u00c1RIA LTDA",
+        "dtaHoraDisp": "2021-03-29T10:55:30.000-03:00",
+        "totalBytes": 2028
+    }
+]

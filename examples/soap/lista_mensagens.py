@@ -6,4 +6,4 @@ from examples.utils import dump_response
 
 r = AccesstageSoapWrapper().lista_mensagens()
 
-dump_response(r, os.path.basename(__file__).split(".")[0])
+dump_response(r.data, os.path.basename(__file__).split(".")[0])
