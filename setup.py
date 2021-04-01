@@ -9,7 +9,7 @@ with open("README.md", "r") as fh:
 
 
 setup(
-    name="as_ws_wapper",
+    name="as_ws_wrapper",
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
     author="Imobanco",
@@ -18,10 +18,10 @@ setup(
     long_description_content_type="text/x-rst",
     url="https://github.com/imobanco/as-ws-wrapper/",
     packages=[
-        "as_ws_wapper",
-        "as_ws_wapper.wrapper",
-        "as_ws_wapper.models",
-        "as_ws_wapper.adapters",
+        "as_ws_wrapper",
+        "as_ws_wrapper.wrapper",
+        "as_ws_wrapper.models",
+        "as_ws_wrapper.adapters",
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
