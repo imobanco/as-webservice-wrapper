@@ -1,8 +1,14 @@
 import base64
 
 
-class Base64Service:
-    def _decode_or_encode(self, message: str, action: callable, result_as_string=True):
+class StringBase64Adapter:
+    """
+    Adaptador
+
+    string <===> string base 64
+    """
+
+    def _decode_or_encode(self, message: str, action: callable, result_as_string=False):
         """
         Método para codificar/decodificar uma mensagem string.
 
@@ -11,14 +17,19 @@ class Base64Service:
         :param result_as_string: flag indicadora se deve ser retornado bytes ou string
         :return: string ou bytes resultado da operação
         """
-        message_bytes = message.encode()
+        if type(message) == str:
+            message_bytes = message.encode()
+        elif type(message) == bytes:
+            message_bytes = message
+        else:
+            raise ValueError("Tipo da mensagem não identificada")
         result_bytes = action(message_bytes)
         if result_as_string:
             result_string = result_bytes.decode()
             return result_string
         return result_bytes
 
-    def encode(self, message_string, result_as_string=True):
+    def string_to_b64(self, message_string, result_as_string=False):
         """
         Método para codificar uma string em string base64.
 
@@ -30,7 +41,7 @@ class Base64Service:
             message_string, base64.b64encode, result_as_string=result_as_string
         )
 
-    def decode(self, base64_string, result_as_string=True):
+    def b64_to_string(self, base64_string, result_as_string=True):
         """
         Método para decodificar uma string base64 em string.
 

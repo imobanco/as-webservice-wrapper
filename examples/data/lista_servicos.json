@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "codigoIntercambio": 1491487,
+        "nomeReceptorMsg": "IMOBANCO BANCO DE COBRAN\u00c7A IMOBILI\u00c1RIA LTDA",
+        "nomeDocumento": "BOOMERANG2",
+        "tipoDocumento": "OUTROS "
+    },
+    {
+        "codigoIntercambio": 1491486,
+        "nomeReceptorMsg": "IMOBANCO BANCO DE COBRAN\u00c7A IMOBILI\u00c1RIA LTDA",
+        "nomeDocumento": "BOOMERANG",
+        "tipoDocumento": "OUTROS "
+    }
+]
