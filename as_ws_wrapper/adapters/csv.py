@@ -1,15 +1,17 @@
 from csv import DictWriter, DictReader
 from io import StringIO
-from typing import List
+from typing import List, Union
 
 from pydantic import BaseModel
+
+from ..models.base import TransactionModel
 
 
 class PydanticCSVAdapter:
     """
     Adaptador
 
-    BaseModel(pydantic) <===> csv string
+    BaseModel(pydantic) <===> csv
     """
 
     COMMA = ","
@@ -17,12 +19,15 @@ class PydanticCSVAdapter:
     SPACE = " "
     TAB = "\t"
     PIPE = "|"
+    USE_BYTES = True
+    PYDANTIC_CLASS = TransactionModel
 
-    def pydantic_to_csv_string(
+    def pydantic_to_csv(
         self,
         instances: List[BaseModel],
-        pydantic_class: BaseModel.__class__,
+        pydantic_class: BaseModel.__class__ = PYDANTIC_CLASS,
         delimiter=SEMICOLON,
+        use_bytes=USE_BYTES,
     ):
         instances_data = [instance.dict() for instance in instances]
 
@@ -33,12 +38,27 @@ class PydanticCSVAdapter:
         )
         writer.writeheader()
         writer.writerows(instances_data)
-        return buffer.getvalue()
 
-    def csv_string_to_pydantic(
-        self, csv_string: str, pydantic_class: BaseModel.__class__, delimiter=SEMICOLON
+        result = buffer.getvalue()
+
+        if use_bytes:
+            result = result.encode()
+
+        return result
+
+    def csv_to_pydantic(
+        self,
+        csv: Union[str, bytes],
+        pydantic_class: BaseModel.__class__ = PYDANTIC_CLASS,
+        delimiter=SEMICOLON,
+        use_bytes=USE_BYTES,
     ):
-        buffer = StringIO(csv_string)
+        _input = csv
+
+        if use_bytes:
+            _input = _input.decode()
+
+        buffer = StringIO(_input)
         reader = DictReader(
             buffer, list(pydantic_class.__fields__.keys()), delimiter=delimiter
         )

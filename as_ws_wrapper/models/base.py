@@ -63,7 +63,7 @@ class TransactionModel(ReceiverInfo, PayerInfo, BaseModel):
 
     """ SEGMENTO A + B (DOC/TED) + J + J52 (boleto) """
     number: constr(max_length=20)  # Numeração única e alfanumérica
-    payment_amount: int  # quantia paga
+    payment_amount: int  # quantia paga em centavos
     payment_date: str  # data de pagamento (formato DDMMAAAA)
     code_line: Optional[str]  # linha digitável do boleto  | boleto apenas
     expiration_date: Optional[
