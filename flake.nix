@@ -18,13 +18,6 @@
           projectDir = ./.;
         };
 
-        hack = pkgsAllowUnfree.writeShellScriptBin "hack" ''
-          # Dont overwrite customised configuration
-
-          # https://dev.to/ifenna__/adding-colors-to-bash-scripts-48g4
-          echo -e '\n\n\n\e[32m\tAmbiente pronto!\e[0m\n'
-          echo -e '\n\t\e[33mignore as proximas linhas...\e[0m\n\n\n'
-        '';
       in
       {
 
