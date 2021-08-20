@@ -1,7 +1,7 @@
 from decouple import config
 
-USERNAME = config("username", default="")
+USERNAME = config("AS_WEBSERVICE_USERNAME", default="")
 """Nome do usuário para autenticação"""
 
-PASSWORD = config("password", default="")
+PASSWORD = config("AS_WEBSERVICE_PASSWORD", default="")
 """Token básico para autenticação"""

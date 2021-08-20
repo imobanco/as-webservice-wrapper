@@ -12,7 +12,7 @@ setup(
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
     author="Imobanco",
-    description="Cliente não oficial da webservice",
+    description="Cliente não oficial do webservice Accesstage",
     long_description=long_description,
     long_description_content_type="text/md",
     url="https://github.com/imobanco/as-ws-wrapper/",
