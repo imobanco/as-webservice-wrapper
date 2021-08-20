@@ -7,6 +7,6 @@ from examples.csv.sample import transactions
 
 
 data = PydanticCSVAdapter().pydantic_to_csv(transactions)
-r = AccesstageSoapWrapper().envia_mensagem("1494574", False, data)
+r = AccesstageSoapWrapper().envia_mensagem("1606224", False, data)
 
 dump_response(r.data, os.path.basename(__file__).split(".")[0])
