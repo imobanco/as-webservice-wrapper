@@ -31,7 +31,6 @@
           buildInputs = with pkgsAllowUnfree; [
             #(pkgsAllowUnfree.poetry2nix.mkPoetryEnv config)
             gnumake
-            hack
             poetry
             python3
           ];
@@ -42,7 +41,6 @@
             export TMPDIR=/tmp
 
             echo "Entering the nix devShell"
-            hack
           '';
         };
       });
