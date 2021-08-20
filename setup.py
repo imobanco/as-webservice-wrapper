@@ -3,7 +3,6 @@ from setuptools import setup
 # versioning
 import versioneer
 
-
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
@@ -15,7 +14,7 @@ setup(
     author="Imobanco",
     description="Cliente não oficial da webservice",
     long_description=long_description,
-    long_description_content_type="text/x-rst",
+    long_description_content_type="text/md",
     url="https://github.com/imobanco/as-ws-wrapper/",
     packages=[
         "as_ws_wrapper",
@@ -39,11 +38,7 @@ setup(
         "",
     ],
     python_requires=">=3.8",
-    install_requires=[
-        "python-decouple>=3.3",
-        "pydantic>=1.7.0",
-        "zeep>=4.0.*"
-    ],
+    install_requires=["python-decouple>=3.3", "pydantic>=1.7.0", "zeep>=4.0.*"],
     project_urls={
         # "Documentation": "https://bb-wrapper.readthedocs.io",
         "Source": "https://github.com/imobanco/as-ws-wrapper",
