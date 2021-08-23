@@ -31,7 +31,7 @@ multi_line_output = 3
 
 
 [tool.poetry]
-name = "as-webservice-wrapper"
+name = "as_ws_wrapper"
 version = "0.0.0"
 description = ""
 authors = ["Imobanco"]
