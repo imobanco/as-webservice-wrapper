@@ -11,9 +11,11 @@ test:
 	python -m unittest $(args)
 
 fmt:
+	isort .
 	black .
 
 fmt.check:
+	isort --check .
 	black --check .
 	flake8
 
@@ -34,4 +36,4 @@ docs.build:
 
 package.build:
 	python setup.py sdist bdist_wheel
-	
+

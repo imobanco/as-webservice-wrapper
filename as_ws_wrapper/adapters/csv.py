@@ -1,4 +1,4 @@
-from csv import DictWriter, DictReader
+from csv import DictReader, DictWriter
 from io import StringIO
 from typing import List, Union
 

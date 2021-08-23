@@ -1,7 +1,7 @@
 from zeep import Client
 from zeep.wsse import UsernameToken
 
-from ..constants import USERNAME, PASSWORD
+from ..constants import PASSWORD, USERNAME
 
 
 class BaseSoapWrapper:

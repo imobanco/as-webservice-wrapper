@@ -1,7 +1,7 @@
 from decouple import config
 
-USERNAME = config("username", default="")
+USERNAME = config("IMOBANCO_AS_WS_USERNAME", default="")
 """Nome do usuário para autenticação"""
 
-PASSWORD = config("password", default="")
+PASSWORD = config("IMOBANCO_AS_WS_PASSWORD", default="")
 """Token básico para autenticação"""

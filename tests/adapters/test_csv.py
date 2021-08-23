@@ -2,7 +2,8 @@ from unittest import TestCase
 
 from as_ws_wrapper.adapters.csv import PydanticCSVAdapter
 from as_ws_wrapper.models.base import TransactionModel
-from ..factories import create_ted_transaction, create_invoice_transaction
+
+from ..factories import create_invoice_transaction, create_ted_transaction
 
 
 class PydanticCSVAdapterTestCase(TestCase):
