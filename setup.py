@@ -14,7 +14,7 @@ setup(
     author="Imobanco",
     description="Cliente não oficial do webservice Accesstage",
     long_description=long_description,
-    long_description_content_type="text/md",
+    long_description_content_type="text/markdown",
     url="https://github.com/imobanco/as-ws-wrapper/",
     packages=[
         "as_ws_wrapper",
