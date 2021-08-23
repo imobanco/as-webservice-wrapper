@@ -38,6 +38,7 @@ authors = ["Imobanco"]
 readme = "README.md"
 packages = [{include = "**/*.py"}]
 
+# poetry config --list
 [virtualenvs]
 virtualenvs.create = true
 virtualenvs.in-project = true
