@@ -98,7 +98,7 @@ class AccesstageSoapWrapper(BaseSoapWrapper):
         return r
 
     def envia_mensagem(
-        self, cod_intercambio: str, flag_compactacao: bool, msg_b64_bytes: bytes
+        self, cod_intercambio: str, msg_bytes: bytes, flag_compactacao: bool = False
     ):
         """
         Método para enviar uma mensagem.
@@ -107,15 +107,15 @@ class AccesstageSoapWrapper(BaseSoapWrapper):
 
         :param cod_intercambio: identificador do serviço
         :param flag_compactacao: flag de compactação
-        :param msg_b64_bytes: mensagem em bytes base 64
+        :param msg_bytes: mensagem em bytes base 64
         :return: resposta processada com status do envio
         """
         client = self.get_client(wsdl=self._get_wsl("EnvioMensagemProxy"))
 
         data = dict(
             codIntercambio=cod_intercambio,
+            dscConteudoMensagem=msg_bytes,
             flgCompactacao=flag_compactacao,
-            dscConteudoMensagem=msg_b64_bytes,
         )
 
         r = client.service.process(**data)
