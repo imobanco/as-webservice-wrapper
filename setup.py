@@ -15,7 +15,7 @@ setup(
     description="Cliente não oficial do webservice Accesstage",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/imobanco/as-ws-wrapper/",
+    url="https://github.com/imobanco/as-webservice-wrapper",
     packages=[
         "as_ws_wrapper",
         "as_ws_wrapper.wrapper",
@@ -41,7 +41,7 @@ setup(
     install_requires=["python-decouple>=3.3", "pydantic>=1.7.0", "zeep>=4.0.*"],
     project_urls={
         # "Documentation": "https://bb-wrapper.readthedocs.io",
-        "Source": "https://github.com/imobanco/as-ws-wrapper",
-        "Tracker": "https://github.com/imobanco/as-ws-wrapper/issues",
+        "Source": "https://github.com/imobanco/as-webservice-wrapper",
+        "Tracker": "https://github.com/imobanco/as-webservice-wrapper/issues",
     },
 )
