@@ -27,6 +27,10 @@ def create_ted_transaction():
         payment_date="22032021",
         expiration_date="",
         code_line="",
+        status="",
+        status_code="",
+        trk_id="",
+        authorization_code="",
     )
 
 
@@ -56,4 +60,8 @@ def create_invoice_transaction():
         payment_date="22032021",
         expiration_date="25032021",
         code_line="12312312312312312312312312312312313123",
+        status="",
+        status_code="",
+        trk_id="",
+        authorization_code="",
     )
