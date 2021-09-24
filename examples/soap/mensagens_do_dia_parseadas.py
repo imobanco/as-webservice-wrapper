@@ -10,7 +10,7 @@ r = AccesstageSoapWrapper().lista_mensagens('1628267')
 mensagens = []
 
 for msg in r.data:
-    if msg['tipoDocumento'] in ['PAGAMENTO', 'OUTOS ']:
+    if msg['tipoDocumento'] in ['PAGAMENTO', 'OUTROS ']:
         mensagens.append(msg)
 
 mensagens_data = []
