@@ -1,7 +1,9 @@
 # Tipo de pagamento
 ```
-01 = Crédito em Conta Corrente/Salário (transferência entra contas)
+01 = Crédito em Conta Corrente/Salário (transferência entre contas)
 03 = DOC/TED (1) (2)
+05 = Crédito em Conta Poupança
+11 = Pagamento de tributos com código de barras
 41 = TED – Outra Titularidade
 43 = TED – Mesma Titularidade
 30 = Liquidação de Títulos do Próprio Banco
