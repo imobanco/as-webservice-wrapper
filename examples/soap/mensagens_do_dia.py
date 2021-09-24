@@ -18,7 +18,7 @@ r = AccesstageSoapWrapper().lista_mensagens('1628267')
 mensagens = []
 
 for msg in r.data:
-    if msg['tipoDocumento'] in ['PAGAMENTO', 'OUTOS '] and msg['trkIdIn'] not in mensagens_data_trkIdIn:
+    if msg['tipoDocumento'] in ['PAGAMENTO', 'OUTROS '] and msg['trkIdIn'] not in mensagens_data_trkIdIn:
         mensagens.append(msg)
 
 for msg in mensagens:
