@@ -80,7 +80,7 @@ class AccesstageSoapWrapper(BaseSoapWrapper):
 
         return r
 
-    def lista_mensagens(self):
+    def lista_mensagens(self, service=None):
         """
         Método para listar as mensagens disponíveis.
 
@@ -91,7 +91,12 @@ class AccesstageSoapWrapper(BaseSoapWrapper):
         """
         client = self.get_client(wsdl=self._get_wsl("ListaMsgDisponiveisProxy"))
 
-        r = client.service.process()
+        if service:
+            data = dict(input=service)
+        else:
+            data = dict()
+
+        r = client.service.process(**data)
 
         r = self._process_response(r)
 
