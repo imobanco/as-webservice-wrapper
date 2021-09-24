@@ -12,10 +12,18 @@ class PayerInfo(BaseModel):
     ]  # tipo do documento 'CPF' ou 'CNPJ' do pagador
     payer_name: str  # nome do pagador
 
-    payer_bank_account_number: Optional[str]  # número da conta bancária do pagador  | TED/DOC apenas  # noqa: E501
-    payer_bank_account_number_dv: Optional[str]  # dv do númerp da conta bancária do pagador  | TED/DOC apenas  # noqa: E501
-    payer_bank_account_routing: Optional[str]  # agência da conta bancária do pagador  | TED/DOC apenas  # noqa: E501
-    payer_bank_account_routing_dv: Optional[str]  # dv da agência da conta bancária do pagador  | TED/DOC apenas  # noqa: E501
+    payer_bank_account_number: Optional[
+        str
+    ]  # número da conta bancária do pagador  | TED/DOC apenas  # noqa: E501
+    payer_bank_account_number_dv: Optional[
+        str
+    ]  # dv do númerp da conta bancária do pagador  | TED/DOC apenas  # noqa: E501
+    payer_bank_account_routing: Optional[
+        str
+    ]  # agência da conta bancária do pagador  | TED/DOC apenas  # noqa: E501
+    payer_bank_account_routing_dv: Optional[
+        str
+    ]  # dv da agência da conta bancária do pagador  | TED/DOC apenas  # noqa: E501
 
 
 class ReceiverInfo(BaseModel):
@@ -72,7 +80,6 @@ class TransactionModel(ReceiverInfo, PayerInfo, BaseModel):
     expiration_date: Optional[
         str
     ]  # data do vencimento (formato DDMMAAAA)  | boleto apenas
-
 
     """
     Dados de retorno
