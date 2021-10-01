@@ -29,9 +29,7 @@ class PydanticCSVAdapter:
         delimiter=SEMICOLON,
         use_bytes=USE_BYTES,
     ):
-        excluded_fields = [
-            "status", "status_code", "authorization_code", "trk_id"
-        ]
+        excluded_fields = ["status", "status_code", "authorization_code", "trk_id"]
 
         instances_data = [instance.dict() for instance in instances]
         for instance_data in instances_data:
@@ -47,9 +45,7 @@ class PydanticCSVAdapter:
 
         buffer = StringIO()
 
-        writer = DictWriter(
-            buffer, fields, delimiter=delimiter
-        )
+        writer = DictWriter(buffer, fields, delimiter=delimiter)
         writer.writeheader()
         writer.writerows(instances_data)
 
