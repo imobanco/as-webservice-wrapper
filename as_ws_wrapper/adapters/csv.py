@@ -29,6 +29,7 @@ class PydanticCSVAdapter:
         delimiter=SEMICOLON,
         use_bytes=USE_BYTES,
     ):
+        # colunas de retorno que não podem ser enviadas!
         excluded_fields = ["status", "status_code", "authorization_code", "trk_id"]
 
         instances_data = [instance.dict() for instance in instances]
