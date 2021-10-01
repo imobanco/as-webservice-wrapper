@@ -4,8 +4,6 @@ from pydantic import BaseModel, constr
 
 
 class PayerInfo(BaseModel):
-    payer_convenio: str  # convênio do pagador
-
     payer_document: constr(min_length=14, max_length=14)  # CPF/CNPJ do pagador
     payer_document_type: Literal[
         "CPF", "CNPJ"
@@ -24,6 +22,7 @@ class PayerInfo(BaseModel):
     payer_bank_account_routing_dv: Optional[
         str
     ]  # dv da agência da conta bancária do pagador  | TED/DOC apenas  # noqa: E501
+    payer_convenio: str  # convênio do pagador
 
 
 class ReceiverInfo(BaseModel):
