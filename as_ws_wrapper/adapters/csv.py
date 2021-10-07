@@ -57,6 +57,24 @@ class PydanticCSVAdapter:
 
         return result
 
+    def _parse_document_from_dict_dat(self, item: dict):
+        keys = ['payer_document_type', 'receiver_document_type']
+
+        mapping = {
+            "2": 'CNPJ',
+            '1': 'CPF'
+        }
+
+        for key in keys:
+            try:
+                value = item[key]
+                item[key] = mapping[value]
+            except KeyError:
+                pass
+
+    def _parse_dict_data_from_csv(self, item: dict):
+        self._parse_document_from_dict_dat(item)
+
     def csv_to_pydantic(
         self,
         csv: Union[str, bytes],
@@ -77,5 +95,8 @@ class PydanticCSVAdapter:
         for index, row in enumerate(reader):
             if index == 0:
                 continue
+
+            self._parse_dict_data_from_csv(item=row)
+
             instances.append(pydantic_class(**row))
         return instances
