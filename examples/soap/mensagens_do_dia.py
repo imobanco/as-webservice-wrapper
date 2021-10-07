@@ -26,9 +26,9 @@ for msg in mensagens:
     mensagem.data["dscConteudoMensagem"] = mensagem.data["dscConteudoMensagem"].decode(
         "iso-8859-1"
     )
-    mensagem.data["trkIdIn"] = msg["trkIdIn"]
-    mensagem.data["tipoDocumento"] = msg["tipoDocumento"]
-    mensagens_data.append(mensagem.data)
+    mensagem.data.update(**msg)
+    if "payer_document" in mensagem.data["dscConteudoMensagem"]:
+        mensagens_data.append(mensagem.data)
 
 
 dump_response(mensagens_data, os.path.basename(__file__).split(".")[0])
