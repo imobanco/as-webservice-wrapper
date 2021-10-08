@@ -58,12 +58,9 @@ class PydanticCSVAdapter:
         return result
 
     def _parse_document_from_dict_dat(self, item: dict):
-        keys = ['payer_document_type', 'receiver_document_type']
+        keys = ["payer_document_type", "receiver_document_type"]
 
-        mapping = {
-            "2": 'CNPJ',
-            '1': 'CPF'
-        }
+        mapping = {"2": "CNPJ", "1": "CPF"}
 
         for key in keys:
             try:

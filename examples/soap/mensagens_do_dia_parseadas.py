@@ -4,7 +4,7 @@ from as_ws_wrapper.adapters.csv import PydanticCSVAdapter
 from examples.utils import dump_response, read_json
 
 try:
-    mensagens_data = read_json('mensagens_do_dia')
+    mensagens_data = read_json("mensagens_do_dia")
 except Exception:
     mensagens_data = []
 
@@ -20,7 +20,7 @@ for msg in mensagens_data:
             instance.trk_id = trk_id
 
         mensagens_instances.extend(instances)
-    except Exception as e:
+    except Exception:
         pass
 
 
