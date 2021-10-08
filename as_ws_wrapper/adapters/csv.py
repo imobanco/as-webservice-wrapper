@@ -57,7 +57,7 @@ class PydanticCSVAdapter:
 
         return result
 
-    def _parse_document_from_dict_dat(self, item: dict):
+    def _parse_document_from_dict_data(self, item: dict):
         keys = ["payer_document_type", "receiver_document_type"]
 
         mapping = {"2": "CNPJ", "1": "CPF"}
@@ -70,7 +70,7 @@ class PydanticCSVAdapter:
                 pass
 
     def _parse_dict_data_from_csv(self, item: dict):
-        self._parse_document_from_dict_dat(item)
+        self._parse_document_from_dict_data(item)
 
     def csv_to_pydantic(
         self,
