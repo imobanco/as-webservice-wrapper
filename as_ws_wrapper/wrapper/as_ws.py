@@ -1,6 +1,6 @@
-import pytz
 from datetime import datetime
 
+import pytz
 from zeep.exceptions import TransportError
 from zeep.xsd.valueobjects import CompoundValue
 
@@ -159,7 +159,9 @@ class AccesstageSoapWrapper(BaseSoapWrapper):
         """
         client = self.get_client(wsdl=self._get_wsl("ConfirmacaoRetiradaProxy"))
 
-        datetime_retrieval = datetime.now(tz=pytz.timezone("America/Sao_Paulo")).isoformat()
+        datetime_retrieval = datetime.now(
+            tz=pytz.timezone("America/Sao_Paulo")
+        ).isoformat()
 
         data = dict(
             trackingID=identifier, dataRetirada=datetime_retrieval, nmeArquivo=file_name
