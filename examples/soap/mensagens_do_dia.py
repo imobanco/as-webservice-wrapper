@@ -27,8 +27,9 @@ for msg in mensagens:
         "iso-8859-1"
     )
     mensagem.data.update(**msg)
-    if "payer_document" in mensagem.data["dscConteudoMensagem"]:
-        mensagens_data.append(mensagem.data)
+    # if "payer_document" in mensagem.data["dscConteudoMensagem"]:
+    #     mensagens_data.append(mensagem.data)
+    mensagens_data.append(mensagem.data)
 
 
 dump_response(mensagens_data, os.path.basename(__file__).split(".")[0])
