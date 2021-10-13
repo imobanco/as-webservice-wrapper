@@ -1,3 +1,4 @@
+import pytz
 from datetime import datetime
 
 from zeep.exceptions import TransportError
@@ -147,7 +148,7 @@ class AccesstageSoapWrapper(BaseSoapWrapper):
 
         return r
 
-    def confirma_retirada(self, identifier, file_name, datetime_retrieval=None):
+    def confirma_retirada(self, identifier, file_name):
         """
         Método para retirar a mensagem da lista de mensagens.
 
@@ -158,8 +159,7 @@ class AccesstageSoapWrapper(BaseSoapWrapper):
         """
         client = self.get_client(wsdl=self._get_wsl("ConfirmacaoRetiradaProxy"))
 
-        if datetime_retrieval is None:
-            datetime_retrieval = datetime.now().isoformat()
+        datetime_retrieval = datetime.now(tz=pytz.timezone("America/Sao_Paulo")).isoformat()
 
         data = dict(
             trackingID=identifier, dataRetirada=datetime_retrieval, nmeArquivo=file_name
