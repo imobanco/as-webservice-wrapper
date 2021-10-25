@@ -9,6 +9,7 @@ except Exception:
     mensagens_data = []
 
 mensagens_instances = []
+invalid = []
 
 for msg in mensagens_data:
     csv_data = msg["dscConteudoMensagem"]
@@ -20,11 +21,16 @@ for msg in mensagens_data:
             instance.trk_id = trk_id
 
         mensagens_instances.extend(instances)
-    except Exception:
-        pass
+    except Exception as e:
+        invalid.append((msg['trkIdIn'], str(e)))
 
 
 instances_data = [instance.dict() for instance in mensagens_instances]
 
+data = {
+    "valid": list({instance.trk_id for instance in mensagens_instances}),
+    "invalid": invalid,
+    "invalid_msgs": [data for data in mensagens_data if data['trkIdIn'] in [item[0] for item in invalid]]
+}
 
-dump_response(instances_data, os.path.basename(__file__).split(".")[0])
+dump_response(data, os.path.basename(__file__).split(".")[0])
