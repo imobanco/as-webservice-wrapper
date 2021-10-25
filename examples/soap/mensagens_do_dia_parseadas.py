@@ -22,7 +22,7 @@ for msg in mensagens_data:
 
         mensagens_instances.extend(instances)
     except Exception as e:
-        invalid.append((msg['trkIdIn'], str(e)))
+        invalid.append((msg["trkIdIn"], str(e)))
 
 
 instances_data = [instance.dict() for instance in mensagens_instances]
@@ -30,7 +30,11 @@ instances_data = [instance.dict() for instance in mensagens_instances]
 data = {
     "valid": list({instance.trk_id for instance in mensagens_instances}),
     "invalid": invalid,
-    "invalid_msgs": [data for data in mensagens_data if data['trkIdIn'] in [item[0] for item in invalid]]
+    "invalid_msgs": [
+        data
+        for data in mensagens_data
+        if data["trkIdIn"] in [item[0] for item in invalid]
+    ],
 }
 
 dump_response(data, os.path.basename(__file__).split(".")[0])

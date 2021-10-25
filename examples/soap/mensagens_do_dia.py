@@ -21,7 +21,7 @@ for msg in r.data:
     ):
         mensagens.append(msg)
 
-print('pagamentos', len(mensagens))
+print("pagamentos", len(mensagens))
 
 
 for msg in mensagens:
@@ -35,8 +35,8 @@ for msg in mensagens:
     # mensagens_data.append(mensagem.data)
 
 
-print('csvs', len(mensagens_data))
+print("csvs", len(mensagens_data))
 
-print('cnabs', len(mensagens) - len(mensagens_data))
+print("cnabs", len(mensagens) - len(mensagens_data))
 
 dump_response(mensagens_data, os.path.basename(__file__).split(".")[0])

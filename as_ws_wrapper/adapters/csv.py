@@ -74,7 +74,8 @@ class PydanticCSVAdapter:
 
     def _parse_document_length_from_dict_data(self, item: dict):
         """
-        Accesstage está retornando o documento (cpf ou cnpj) com tamanho 15 ao invés de 14
+        Accesstage está retornando o documento (cpf ou cnpj)
+        com tamanho 15 ao invés de 14
 
         vide mensagem ID 202110154648946!
         """
