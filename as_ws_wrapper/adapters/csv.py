@@ -57,7 +57,10 @@ class PydanticCSVAdapter:
 
         return result
 
-    def _parse_document_from_dict_data(self, item: dict):
+    def _parse_document_type_from_dict_data(self, item: dict):
+        """
+        Accesstage está retornando "1" ou "2" ao invés de "CPF" ou "CNPJ"
+        """
         keys = ["payer_document_type", "receiver_document_type"]
 
         mapping = {"2": "CNPJ", "1": "CPF"}
@@ -69,8 +72,24 @@ class PydanticCSVAdapter:
             except KeyError:
                 pass
 
+    def _parse_document_length_from_dict_data(self, item: dict):
+        """
+        Accesstage está retornando o documento (cpf ou cnpj) com tamanho 15 ao invés de 14
+
+        vide mensagem ID 202110154648946!
+        """
+        keys = ["payer_document", "receiver_document"]
+
+        for key in keys:
+            try:
+                value = item[key]
+                item[key] = value[-14:]
+            except KeyError:
+                pass
+
     def _parse_dict_data_from_csv(self, item: dict):
-        self._parse_document_from_dict_data(item)
+        self._parse_document_type_from_dict_data(item)
+        self._parse_document_length_from_dict_data(item)
 
     def csv_to_pydantic(
         self,
