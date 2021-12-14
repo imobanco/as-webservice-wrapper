@@ -30,11 +30,11 @@ class ReceiverInfo(BaseModel):
     Informações do favorecido/beneficiário
     """
 
-    receiver_document: constr(min_length=14, max_length=14)  # CPF/CNPJ do recebedor
-    receiver_document_type: Literal[
+    receiver_document: Optional[constr(min_length=14, max_length=14)]  # CPF/CNPJ do recebedor
+    receiver_document_type: Optional[Literal[
         "CPF", "CNPJ"
-    ]  # tipo do documento 'CPF' ou 'CNPJ' recebedor
-    receiver_name: str  # nome do recebedor
+    ]]  # tipo do documento 'CPF' ou 'CNPJ' recebedor
+    receiver_name: Optional[str]  # nome do recebedor
 
     receiver_bank_account_bank_name: Optional[
         str
@@ -72,8 +72,8 @@ class TransactionModel(ReceiverInfo, PayerInfo, BaseModel):
 
     """ SEGMENTO A + B (DOC/TED) + J + J52 (boleto) """
     number: constr(max_length=20)  # Numeração única e alfanumérica
-    payment_amount: int  # quantia paga em centavos
-    payment_date: str  # data de pagamento (formato DDMMAAAA)
+    payment_amount: Optional[int]  # quantia paga em centavos
+    payment_date: Optional[str]  # data de pagamento (formato DDMMAAAA)
 
     code_line: Optional[str]  # linha digitável do boleto  | boleto apenas
     expiration_date: Optional[
