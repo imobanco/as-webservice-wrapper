@@ -88,9 +88,21 @@ class PydanticCSVAdapter:
             except KeyError:
                 pass
 
+    def _parse_empty_data(self, item: dict):
+        keys = ["receiver_document_type", "receiver_document", "payment_amount"]
+
+        for key in keys:
+            try:
+                value = item[key]
+                if value == "":
+                    item[key] = None
+            except KeyError:
+                pass
+
     def _parse_dict_data_from_csv(self, item: dict):
         self._parse_document_type_from_dict_data(item)
         self._parse_document_length_from_dict_data(item)
+        self._parse_empty_data(item)
 
     def csv_to_pydantic(
         self,
