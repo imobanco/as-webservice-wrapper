@@ -30,10 +30,12 @@ class ReceiverInfo(BaseModel):
     Informações do favorecido/beneficiário
     """
 
-    receiver_document: Optional[constr(min_length=14, max_length=14)]  # CPF/CNPJ do recebedor
-    receiver_document_type: Optional[Literal[
-        "CPF", "CNPJ"
-    ]]  # tipo do documento 'CPF' ou 'CNPJ' recebedor
+    receiver_document: Optional[
+        constr(min_length=14, max_length=14)
+    ]  # CPF/CNPJ do recebedor
+    receiver_document_type: Optional[
+        Literal["CPF", "CNPJ"]
+    ]  # tipo do documento 'CPF' ou 'CNPJ' recebedor
     receiver_name: Optional[str]  # nome do recebedor
 
     receiver_bank_account_bank_name: Optional[
