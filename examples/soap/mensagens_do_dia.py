@@ -10,7 +10,7 @@ except Exception:
 
 mensagens_data_trkIdIn = [msg["trkIdIn"] for msg in mensagens_data]
 
-r = AccesstageSoapWrapper().lista_mensagens("1628267")
+r = AccesstageSoapWrapper().lista_mensagens()
 
 mensagens = []
 
