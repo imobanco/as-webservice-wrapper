@@ -48,3 +48,28 @@ class PydanticCSVAdapterTestCase(TestCase):
         for index, item in enumerate(result):
             with self.subTest(index):
                 self.assertEqual(item.dict(), expected[index].dict())
+
+    def test_csv_to_pydantic_2(self):
+        """
+        Dado:
+            - um csv string válido
+        Quando:
+            - for chamado PydanticCSVAdapter().csv_string_to_pydantic(
+                csv_string, TransactionModel
+            )
+        Então:
+            - o resultado deve ter a lista de instâncias corretas
+        """
+        csv_string = b"payer_document;payer_document_type;payer_name;payer_bank_account_number;payer_bank_account_number_dv;payer_bank_account_routing;payer_bank_account_routing_dv;payer_convenio;receiver_document;receiver_document_type;receiver_name;receiver_bank_account_bank_name;receiver_bank_account_bank_code;receiver_bank_account_number;receiver_bank_account_number_dv;receiver_bank_account_routing;receiver_bank_account_routing_dv;receiver_bank_account_routing_number_dv;payment_type;number;payment_amount;payment_date;code_line;expiration_date\r\n12345678901234;CNPJ;foo bar da silva;123123;4;123123;4;123;;;foo bar da silva;Banco do Brasil;001;123123;4;123123;4;;03;1;;22032021;;\r\n12345678901234;CNPJ;foo bar da silva;123123;4;123123;4;123;;;foo bar da silva;;;;;;;;31;1;;22032021;12312312312312312312312312312312313123;25032021\r\n"  # noqa
+
+        result = PydanticCSVAdapter().csv_to_pydantic(csv_string, TransactionModel)
+
+        expected = [create_ted_transaction(), create_invoice_transaction()]
+
+        for index, item in enumerate(result):
+            with self.subTest(index):
+                expected_dict = expected[index].dict()
+                expected_dict["payment_amount"] = None
+                expected_dict["receiver_document"] = None
+                expected_dict["receiver_document_type"] = None
+                self.assertEqual(item.dict(), expected_dict)
